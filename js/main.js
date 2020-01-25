@@ -1,5 +1,12 @@
 window.addEventListener('load', () => {
-    getData().then(usersData => createDOM(usersData));
+    getData().then(usersData => {
+        createDOM(usersData);
+        const toSort = document.getElementById('btn');
+        toSort.onclick = () => {
+            const sortedUsers = usersData.sort((a, b) => `${a.name.first}${a.name.second}`.localeCompare(`${b.name.first}${b.name.second}`));
+            createDOM(sortedUsers);
+        }
+    });
 });
 
 const capitalizer = (str) => {
@@ -93,8 +100,12 @@ const createDOM = (data) => {
         fragment.appendChild(userDiv);
         fragment.appendChild(userModal);
     });
-
+    document.getElementById('app').innerHTML = '';
     document.getElementById('app').appendChild(fragment);
+    const btn = document.createElement('button');
+    btn.textContent = 'Sort';
+    btn.id = 'btn';
+    document.getElementById('app').appendChild(btn);
 }
 
 const showInfo = (userInfo, userDOM) => {
