@@ -13,7 +13,7 @@ const capitalizer = (str) => {
 }
 
 const getData = async () => {
-    const url = 'https://cors-anywhere.herokuapp.com/http://api.randomuser.me/1.0/?results=10&nat=gb,us&inc=gender,name,location,email,phone,picture';
+    const url = 'https://cors-anywhere.herokuapp.com/http://api.randomuser.me/1.0/?results=50&nat=gb,us&inc=gender,name,location,email,phone,picture';
     const response = await fetch(url).then(response => response.json());
     return response.results;
 }
@@ -63,6 +63,7 @@ const createUserModalContentDOM = (user) => {
     content.className = 'modal-content';
     
     const userImg = document.createElement('img');
+    userImg.className = 'img';
     userImg.src = user.picture.large;
     content.appendChild(userImg);
 
