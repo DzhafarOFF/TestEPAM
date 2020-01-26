@@ -107,7 +107,6 @@ const createDOM = (data) => {
     btnReverse.id = 'btn-reverse';
     document.getElementById('app').appendChild(btnSort);
     document.getElementById('app').appendChild(btnReverse);
-    console.log(users);
     btnSort.onclick = () => {
         const sortedUsers = users.sort((a, b) => `${a.name.first}${a.name.second}`.localeCompare(`${b.name.first}${b.name.second}`));
         createDOM(sortedUsers);
@@ -119,7 +118,6 @@ const createDOM = (data) => {
 }
 
 const showInfo = (userInfo, userDOM) => {
-    console.log(userInfo);
     userDOM.style.display = 'block';
 
     window.onclick = function(event) {
